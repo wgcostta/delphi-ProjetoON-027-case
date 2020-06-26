@@ -1,0 +1,73 @@
+﻿unit ConfirmarExclusao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TForm3 = class(TForm)
+    Panel1: TPanel;
+    btnConfirma: TBitBtn;
+    btnCancelar: TBitBtn;
+    StaticText1: TStaticText;
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnConfirmaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ExcluirCliente: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+uses frmDataModulo;
+
+procedure TForm3.btnCancelarClick(Sender: TObject);
+begin
+    frmDataModulo.DataModule1.cdsClientes.Cancel;
+    close;
+end;
+
+procedure TForm3.btnConfirmaClick(Sender: TObject);
+begin
+      frmDataModulo.DataModule1.cdsEndcli.close;
+  frmDataModulo.DataModule1.cdsEndcli.ParamByName('CODCLIENTE').AsInteger := frmDataModulo.DataModule1.cdsClientesCODCLI.AsInteger;
+  frmDataModulo.DataModule1.cdsEndcli.open;
+  // Enquanto não chegar ao fim da endcli delete
+  while not frmDataModulo.DataModule1.cdsEndcli.Eof do
+  begin
+    frmDataModulo.DataModule1.cdsEndcli.Delete;
+
+  end;
+
+
+  frmDataModulo.DataModule1.cdsEndcli.ApplyUpdates(0);
+
+  // varrendo telcli com delete
+  frmDataModulo.DataModule1.cdsTelcli.close;
+  frmDataModulo.DataModule1.cdsTelcli.ParamByName('CODCLIENTE').AsInteger := frmDataModulo.DataModule1.cdsClientesCODCLI.AsInteger;
+  frmDataModulo.DataModule1.cdsTelcli.open;
+
+  while not frmDataModulo.DataModule1.cdsTelcli.Eof do
+  begin
+    frmDataModulo.DataModule1.cdsTelcli.Delete;
+  end;
+
+  frmDataModulo.DataModule1.cdsTelcli.ApplyUpdates(0);
+  // delete no cliente por ultimo
+  frmDataModulo.DataModule1.cdsClientes.Delete;
+  frmDataModulo.DataModule1.cdsClientes.ApplyUpdates(0);
+  close;
+
+
+
+end;
+
+end.

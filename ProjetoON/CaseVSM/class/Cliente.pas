@@ -1,0 +1,81 @@
+unit Cliente;
+
+interface
+
+uses frmDataModulo,
+  // Bibliotecas Importadas Delphi:
+  Data.DB, System.SysUtils, Vcl.Dialogs;
+
+type
+  TCliente = class
+    procedure SetPersisteEndcli(codCliente: Integer);
+    procedure SetPersisteTelcli(codCliente: Integer);
+    function SetPersisteCliente: Integer;
+    function StateCliente: Boolean;
+    function UltimoCliente: Integer;
+  end;
+
+implementation
+
+{ TCliente }
+
+var
+    varCliente : TCliente;
+
+function TCliente.SetPersisteCliente: Integer;
+var
+    temp_ultimocliente : Integer;
+begin
+  // Persistir o cliente
+  frmDataModulo.DataModule1.cdsClientes.Post;
+  frmDataModulo.DataModule1.cdsClientes.ApplyUpdates(0);
+  if frmDataModulo.DataModule1.cdsClientesCODCLI.AsString.IsEmpty then
+    Result := UltimoCliente
+  else
+    Result := frmDataModulo.DataModule1.cdsClientesCODCLI.AsInteger;
+end;
+
+procedure TCliente.SetPersisteEndcli(codCliente: Integer);
+begin
+  // Endereço
+  frmDataModulo.DataModule1.cdsEndcli.First;
+  while not frmDataModulo.DataModule1.cdsEndcli.Eof do
+  begin
+    frmDataModulo.DataModule1.cdsEndcli.Edit;
+    frmDataModulo.DataModule1.cdsEndcliCODCLI.AsInteger := codCliente;
+    frmDataModulo.DataModule1.cdsEndcli.Post;
+
+    frmDataModulo.DataModule1.cdsEndcli.Next;
+  end;
+  frmDataModulo.DataModule1.cdsEndcli.ApplyUpdates(0);
+
+end;
+
+procedure TCliente.SetPersisteTelcli(codCliente: Integer);
+begin
+  // Varrer telefones e inserir
+  frmDataModulo.DataModule1.cdsTelcli.First;
+  while not frmDataModulo.DataModule1.cdsTelcli.Eof do
+  begin
+    frmDataModulo.DataModule1.cdsTelcli.Edit;
+    frmDataModulo.DataModule1.cdsTelcliCODCLI.AsInteger := codCliente;
+    frmDataModulo.DataModule1.cdsTelcli.Post;
+    frmDataModulo.DataModule1.cdsTelcli.Next;
+  end;
+  frmDataModulo.DataModule1.cdsTelcli.ApplyUpdates(0);
+end;
+
+function TCliente.StateCliente: Boolean;
+begin
+  Result := (frmDataModulo.DataModule1.cdsClientes.State = dsInsert);
+end;
+
+function TCliente.UltimoCliente: Integer;
+begin
+  ///
+  frmDataModulo.DataModule1.SQL.close;
+  frmDataModulo.DataModule1.SQL.open;
+  Result := frmDataModulo.DataModule1.SQL.FieldByName('CODCLI').AsInteger;
+end;
+
+end.

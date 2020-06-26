@@ -1,0 +1,18 @@
+unit Vendedores;
+
+interface
+
+uses frmDataModulo,
+  // Bibliotecas Importadas Delphi:
+  Data.DB, System.SysUtils;
+
+type
+  TVendedores = class
+
+  end;
+
+implementation
+
+
+
+end.

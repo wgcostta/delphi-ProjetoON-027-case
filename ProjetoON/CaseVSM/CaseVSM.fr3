@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.0.10" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43261,7147176968" ReportOptions.Description.Text="" ReportOptions.LastChange="43261,7223265162" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="DBXQuery1" DataSetName="DBXQuery1"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxDBXQuery Name="DBXQuery1" UserName="DBXQuery1" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="" Database="DBXDatabase1" PropData="05704C6566740394000470546F7003AC000A506172616D65746572730100"/>
+    <TfrxDBXDatabase Name="DBXDatabase1" ConnectionName="drogaria" DriverName="MySQL" LoginPrompt="False" Params.Text="DriverName=MySQL&#13;&#10;DriverUnit=Data.DBXMySQL&#13;&#10;DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.bpl&#13;&#10;DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borland.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0d1b1b&#13;&#10;MetaDataPackageLoader=TDBXMySqlMetaDataCommandFactory,DbxMySQLDriver250.bpl&#13;&#10;MetaDataAssemblyLoader=Borland.Data.TDBXMySqlMetaDataCommandFactory,Borland.Data.DbxMySQLDriver,Version=24.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0d1b1b&#13;&#10;LibraryName=dbxmys.dll&#13;&#10;LibraryNameOsx=libsqlmys.dylib&#13;&#10;VendorLib=LIBMYSQL.dll&#13;&#10;VendorLibWin64=libmysql.dll&#13;&#10;VendorLibOsx=libmysqlclient.dylib&#13;&#10;HostName=myouro.c4pnbguwagd2.sa-east-1.rds.amazonaws.com&#13;&#10;Database=myouro&#13;&#10;User_Name=root&#13;&#10;Password=drogaria&#13;&#10;MaxBlobSize=-1&#13;&#10;LocaleCode=0000&#13;&#10;Compressed=False&#13;&#10;Encrypted=False&#13;&#10;BlobSize=-1&#13;&#10;ErrorResourceFile=" PropData="05704C6566740390000470546F700270"/>
+  </TfrxDataPage>
+  <TfrxReportPage Name="Page1" PaperWidth="216" PaperHeight="279" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="31" VGuides.Text=""/>
+  <TfrxReportPage Name="Page2" PaperWidth="216" PaperHeight="279" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="" VGuides.Text=""/>
+</TfrxReport>

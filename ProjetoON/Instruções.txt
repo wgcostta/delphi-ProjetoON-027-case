@@ -1,0 +1,10 @@
+MySQL Data Transfer
+Source Host: myouro.c4pnbguwagd2.sa-east-1.rds.amazonaws.com
+Source Database: myouro
+Target Host: myouro.c4pnbguwagd2.sa-east-1.rds.amazonaws.com
+Senha: drogaria
+
+Date: 11/06/2018 02:02:48
+
+Usuario para acesso ao sistema: vsm
+senha: demo
